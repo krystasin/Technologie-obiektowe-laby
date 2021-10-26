@@ -1,4 +1,4 @@
-﻿
+﻿using System.Runtime.Serialization;
 
 namespace app
 {
@@ -42,11 +42,11 @@ namespace app
             this.waluta_form_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.waluta_form_in.Location = new System.Drawing.Point(22, 51);
             this.waluta_form_in.Name = "waluta_form_in";
-            this.waluta_form_in.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.waluta_form_in.Size = new System.Drawing.Size(97, 24);
             this.waluta_form_in.TabIndex = 0;
             this.waluta_form_in.TextChanged += new System.EventHandler(this.waluta_form_in_TextChanged);
             this.waluta_form_in.Enter += new System.EventHandler(this.waluta_form_in_Enter);
+            this.waluta_form_in.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.waluta_form_in_KeyPress);
             // 
             // waluta_list_from
             // 
@@ -66,7 +66,6 @@ namespace app
             this.waluta_list_to.Name = "waluta_list_to";
             this.waluta_list_to.Size = new System.Drawing.Size(215, 24);
             this.waluta_list_to.TabIndex = 3;
-     //       this.waluta_list_to.Text = string.Format("{0:0.00}, number"); 
             this.waluta_list_to.SelectionChangeCommitted += new System.EventHandler(this.waluta_list_to_SelectionChangeCommitted);
             // 
             // text_1

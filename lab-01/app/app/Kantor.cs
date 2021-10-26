@@ -42,12 +42,6 @@ namespace app
 
         
         }
-        public void wypiszListe()
-        {
-            foreach (Waluta w in waluty)
-            {
-                Console.WriteLine(w);
-            }
-        }
+
     }
 }

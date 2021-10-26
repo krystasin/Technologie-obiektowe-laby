@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Text.RegularExpressions;
 
 namespace app
 {
     public partial class Form1 : Form
     {
 
-        Kantor kantor = new Kantor();
+
+        private Singleton s = Singleton.GetSingleton();
+
+        private Regex reg = new Regex(@"^\d*,?\d?\d?$");
 
 
 
@@ -26,10 +29,10 @@ namespace app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            kantor.loadData();
-            List<Waluta> waluty2 = new List<Waluta>(kantor.waluty);
+            s.kantor.loadData();
+            List<Waluta> waluty2 = new List<Waluta>(s.kantor.waluty);
          
-            waluta_list_from.DataSource = kantor.waluty;
+            waluta_list_from.DataSource = s.kantor.waluty;
             waluta_list_to.DataSource = waluty2;
 
         }
@@ -39,17 +42,13 @@ namespace app
 
         private void waluta_list_to_SelectionChangeCommitted(object sender, EventArgs e)        {
             waluta_form_out.Text = wyliczBEDOES();
-
         }
 
         private void waluta_list_from_SelectionChangeCommitted(object sender, EventArgs e)        {
-
             waluta_form_out.Text = wyliczBEDOES();
-
         }
 
-        private void waluta_form_in_TextChanged(object sender, EventArgs e)
-        {
+        private void waluta_form_in_TextChanged(object sender, EventArgs e)        {
             waluta_form_out.Text = wyliczBEDOES();
         }
 
@@ -60,7 +59,6 @@ namespace app
             Waluta wt = (Waluta)waluta_list_to.SelectedItem;
             try
             {
-
                 double wynik = double.Parse(waluta_form_in.Text);
                 wynik = wynik * wf.Kurs / wf.Przelicznik * wt.Przelicznik / wt.Kurs;
                 wynik = Math.Round(wynik, 2);
@@ -68,7 +66,7 @@ namespace app
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+              //  Console.WriteLine(e);
             }
 
             return "";
@@ -76,7 +74,21 @@ namespace app
 
         private void waluta_form_in_Enter(object sender, EventArgs e)
         {
-        
+           Console.WriteLine("kriopee kszton");
+        }
+
+        private void waluta_form_in_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if ((int)e.KeyChar == 46) 
+                e.KeyChar = (char)44;
+           //   Console.WriteLine("kriopee kszton");
+
+
+            if (e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                if (!reg.IsMatch(waluta_form_in.Text + e.KeyChar))    
+                    e.Handled = true;
+
         }
     }
 }
