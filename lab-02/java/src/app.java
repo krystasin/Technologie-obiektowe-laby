@@ -53,5 +53,7 @@ public class app {
         tab = vvD.getComponents();
         System.out.println("v3dD X v3dI: ["+tab[0]+"]["+tab[1]+"]["+tab[2]+"]");
 
+
+        System.out.println("---");
     }
 }
