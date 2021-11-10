@@ -1,0 +1,6 @@
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\bin\Release\ConsoleApp1.exe.config
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\bin\Release\ConsoleApp1.exe
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\bin\Release\ConsoleApp1.pdb
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\obj\Release\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\obj\Release\ConsoleApp1.exe
+D:\STUDIA\V SEMESTR\TO\lab-02\ConsoleApp1\ConsoleApp1\obj\Release\ConsoleApp1.pdb
