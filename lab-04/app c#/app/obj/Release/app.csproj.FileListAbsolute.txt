@@ -1,0 +1,10 @@
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\bin\Release\app.exe.config
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\bin\Release\app.exe
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\bin\Release\app.pdb
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.SuggestedBindingRedirects.cache
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.Form1.resources
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.Properties.Resources.resources
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.GenerateResource.cache
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.CoreCompileInputs.cache
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.exe
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.pdb

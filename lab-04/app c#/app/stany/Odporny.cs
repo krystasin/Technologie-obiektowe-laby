@@ -10,13 +10,18 @@ namespace app
     {
 
 
-        public void kontakt()
+        public void kontakt(List<Jednostka> list, Jednostka j)
         {
 
         }
         public Brush getColor()
         {
             return Brushes.LightGreen;
+        }
+
+        public State newInstance()
+        {
+            return new Odporny();
         }
     }
 }

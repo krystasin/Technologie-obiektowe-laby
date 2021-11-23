@@ -8,46 +8,49 @@ using System.Threading.Tasks;
 namespace app
 {
 
-    class Vector2D : IVector
+    class Vector2D 
     {
 
-        private State state;
-        public double x { get; set; }
-        public double y { get; set; }
 
-        public Brush getColor()
-        {
-            return state.getColor();
-        }
+        private double x;
+        private double y;
+
+        public double X { get => x; set => x = value; }
+        public double Y { get => y; set => y = value; }
+
         public Vector2D(double x, double y)
         {
-            this.state = new Odporny();
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }       
-        public Vector2D(double x, double y, State state)
-        {
-            this.x = x;
-            this.y = y;
-            this.state = state;
-        }
-                                                                                                                                 
 
-
+                                                                                                                               
         public double abs()
         {
-            return Math.Sqrt(x * x + y * y);
+            return Math.Sqrt(X * X + Y * Y);
         }
-        public double cdot(IVector vector)
+        public double cdot(Vector2D vector)
         {
-            return (vector.x * x + vector.y * y);
+            return (vector.X * X + vector.Y * Y);
         }
         public double[] getComponents()
         {
-            double[] tab = { x, y };
+            double[] tab = { X, Y };
             return tab;
         }
+        public double getAngle()
+        {
+            Vector2D ox = new Vector2D(1,0);
+            double cosA = this.cdot(ox) / (this.abs() * ox.abs());
+            return (180 / Math.PI) *  cosA;
+        }
 
+        public void chgangeDirection(bool b = false)
+        {
+            double temp = x;
+            x = y;
+            y = temp;
+        }
 
     }
 

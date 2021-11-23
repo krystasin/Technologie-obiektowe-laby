@@ -18,3 +18,4 @@ D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Debug\app.csproj.GenerateResource.c
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Debug\app.csproj.CoreCompileInputs.cache
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Debug\app.exe
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Debug\app.pdb
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Debug\app.csproj.SuggestedBindingRedirects.cache

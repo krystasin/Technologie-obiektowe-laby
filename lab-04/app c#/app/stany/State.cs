@@ -9,8 +9,10 @@ namespace app
 {
     interface State
     {
-        void kontakt();
+        void kontakt(List<Jednostka> list, Jednostka j);
         Brush getColor();
 
+        State newInstance();
     }
+
 }
