@@ -18,8 +18,14 @@ public class app {
 
 
         Polar2DAdapter v2dA = new Polar2DAdapter(new Vector2D(4,5));
+        Polar2DAdapter x = new Polar2DAdapter(new Vector2D(1,0));
         double[] tab = v2dA.getComponents();
         System.out.println("v2dA: [" + tab[0] + "][" + tab[1] + "] ---  (" + Math.round(v2dA.getAngle()) + "st," + Math.round(v2dA.abs()) + "j)");
+
+
+        Polar2DAdapter xx = ((Polar2DAdapter) v2dA).cross(x);
+        tab = xx.getComponents();
+        System.out.println("v2dA X v3dI: ["+tab[0]+"]["+tab[1]+"]["+tab[2]+"]");
 
 
 

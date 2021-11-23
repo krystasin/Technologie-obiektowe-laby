@@ -30,6 +30,11 @@ namespace app
             Console.WriteLine("create save " + i);
             if(!dictionary.ContainsKey(i))
                 dictionary.Add(i, tempList);
+            else
+            {
+                dictionary.Remove(i);
+                dictionary.Add(i, tempList);
+            }
         }
     
 
@@ -52,7 +57,7 @@ namespace app
             
             }
             catch {
-                throw new Exception();  
+                throw new Exception("ERROR - błąd przywrócenia pamiątki");  
                     }
 
         }

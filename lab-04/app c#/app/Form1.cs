@@ -17,10 +17,9 @@ namespace app
         public static readonly int czasZakazenia = 75;
         public static readonly int StepsPerSecond = 25;
         private int ballSize = 10;
-        Thread th;
         Graphics g;
-        Graphics fG;
-        Bitmap btm;
+        Graphics g2;
+        Bitmap bm;
 
         private List<Jednostka> jednostki = new List<Jednostka>();
         static int iloscOsobnikow = 200;
@@ -32,92 +31,17 @@ namespace app
         public Form1()
         {
             InitializeComponent();
-//            Console.WriteLine($"xRate {xRate}  \t yRate: {yRate}");
+            //            Console.WriteLine($"xRate {xRate}  \t yRate: {yRate}");
 
             g = drawArea.CreateGraphics();
-            fG = CreateGraphics();
-   
+            g.Clear(Color.Black);
+            bm = new Bitmap(drawArea.Width, drawArea.Height);
+            g2 = Graphics.FromImage(bm);
+
             xRate = (drawArea.Width - 1) / xSize;
             yRate = (drawArea.Height - 1) / ySize;
         }
 
-
-
-        private void createMemento(int nrZapisu)
-        {
-            momento.create(nrZapisu,jednostki);
-        }
-
-
-        private void draw(object sender, PaintEventArgs e)
-        {
-            int ii = 0;
-            while (true)
-            {
-                ii++;
-                noweJednostki();
-                obliczenia();
-
-                //   g.Clear(Color.FromArgb(20, 20, 20));
-                   g.Clear(Color.Black);
-             //   g.Background = new SolidColorBrush(Color.FromRgb(redColor, 0x0, blueColor));
-                foreach (Jednostka item in jednostki)
-                    g.FillEllipse(item.getColor(), (int)(item.Position.X * xRate - ballSize / 2), (int)(item.Position.Y * yRate - ballSize / 2), ballSize, ballSize);
-
-          
-                wait(1000/ Form1.StepsPerSecond); 
-                if(ii == 25) {
-                    Console.WriteLine(Form1.iloscOsobnikow);
-                    ii = 0;
-                }
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void obliczenia()
-        {
-            foreach (var item in jednostki)
-                item.checkIfInfected(jednostki);
-            
-            foreach (var item in jednostki) {
-                item.randomMovementChange();
-                item.changePosition();
-            }
-
-            //  usuwanie jednostek z poza obszaru
-            foreach (var item in jednostki.Reverse<Jednostka>()) {
-                if (item.checkIfOut(xSize, ySize)) {
-                    jednostki.Remove(item);
-                    Form1.iloscOsobnikow--;
-                }
-            }
-
-        }
-        private void restore(int i)
-        {
-            try
-            {
-                jednostki = momento.restore(i);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("nieudane ładowanie zapisu");
-            }
-        }
 
 
 
@@ -137,10 +61,89 @@ namespace app
             }
         }
 
+        private void draw(object sender, PaintEventArgs e)
+        {
+            int ii = 0;
+            while (true)
+            {
+                wypiszLiczbeOsobnikow(ii++);
+                noweJednostki();
+                obliczenia();
+
+
+                g2.Clear(Color.Black);
+                foreach (Jednostka item in jednostki)
+                    g2.FillEllipse(item.getColor(), (int)(item.Position.X * xRate - ballSize / 2), (int)(item.Position.Y * yRate - ballSize / 2), ballSize, ballSize);
+
+               
+                g.DrawImage(bm, 0, 0);  
+                wait(1000 / Form1.StepsPerSecond);
+
+            }
+        }
+
+
+
+
+
+
+        private void wypiszLiczbeOsobnikow(int ii)
+        {
+            if (ii == 25)
+            {
+                Console.WriteLine(Form1.iloscOsobnikow);
+                ii = 0;
+            }
+        }
+
+
+
+
+        private void obliczenia()
+        {
+            foreach (var item in jednostki)
+                item.checkIfInfected(jednostki);
+
+            foreach (var item in jednostki)
+            {
+                item.randomMovementChange();
+                item.changePosition();
+            }
+
+            //  usuwanie jednostek z poza obszaru
+            foreach (var item in jednostki.Reverse<Jednostka>())
+            {
+                if (item.checkIfOut(xSize, ySize))
+                {
+                    jednostki.Remove(item);
+                    Form1.iloscOsobnikow--;
+                }
+            }
+
+        }
+        private void restore(int i)
+        {
+            try
+            {
+                jednostki = momento.restore(i);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("nieudane ładowanie zapisu");
+            }
+        }
+
+
+        private void createMemento(int nrZapisu)
+        {
+            momento.create(nrZapisu, jednostki);
+        }
+
+
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
+
 
         }
 
@@ -176,7 +179,7 @@ namespace app
 
         private void restore3_Click(object sender, EventArgs e)
         {
-             restore(3);
+            restore(3);
         }
 
         private void restore4_Click(object sender, EventArgs e)
@@ -210,22 +213,22 @@ namespace app
         private void noweJednostki()
         {
             Random rand = new Random();
-            if(rand.Next(5) == 0)
+            if (rand.Next(5) == 0)
             {
                 Movement movment = new Movement(rand.NextDouble(), rand.NextDouble());
-                
+
                 Position position;
                 int r = rand.Next(4);
                 if (r == 0)
                 {
                     position = new Position(0, rand.Next((int)ySize));
 
-                } 
+                }
                 else if (r == 1)
                 {
-                    position = new Position( rand.Next((int)xSize), (int)ySize);
+                    position = new Position(rand.Next((int)xSize), (int)ySize);
                 }
-                else if (r==2)
+                else if (r == 2)
                 {
                     position = new Position((int)xSize, rand.Next((int)ySize));
                 }
@@ -233,11 +236,11 @@ namespace app
                     position = new Position(rand.Next((int)xSize), 0);
 
                 //todo dorobic tu ew w Movement.changeDirection zeby celował wektor w środek
-                    
-  
+
+
                 jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Objawowy()));
                 Form1.iloscOsobnikow++;
-             //   Console.WriteLine("stworzone nowego");
+                //   Console.WriteLine("stworzone nowego");
             }
 
 

@@ -8,3 +8,4 @@ D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.GenerateResource
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.CoreCompileInputs.cache
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.exe
 D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.pdb
+D:\STUDIA\V SEMESTR\TO\lab-04\app c#\app\obj\Release\app.csproj.AssemblyReference.cache
