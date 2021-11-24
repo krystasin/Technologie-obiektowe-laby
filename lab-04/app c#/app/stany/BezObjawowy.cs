@@ -30,5 +30,13 @@ namespace app
         {
             return new BezObjawowy();
         }
+
+        public bool czyZakazi()
+        {
+            Random random = new Random();
+            if(random.Next(2) == 0)
+                return false;
+            return true;
+        }
     }
 }

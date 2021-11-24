@@ -13,6 +13,9 @@ namespace app
         Brush getColor();
 
         State newInstance();
+
+        bool czyZakazi();
+
     }
 
 }

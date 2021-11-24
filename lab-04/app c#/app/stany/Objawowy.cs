@@ -30,5 +30,10 @@ namespace app
         {
             return new Objawowy();
         }
+
+        public bool czyZakazi()
+        {
+            return true;
+        }
     }
 }

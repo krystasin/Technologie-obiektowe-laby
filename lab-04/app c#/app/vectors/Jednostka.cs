@@ -61,7 +61,7 @@ namespace app
         internal Movement Movement { get => movement; set => movement = value; }
         public int InfectedMaxTimeSteps { get => infectedMaxTimeSteps; set => infectedMaxTimeSteps = value; }
         public int InfectedTimeSteps { get => infectedTimeSteps; set => infectedTimeSteps = value; }
-        internal State State { get => state; set => state = value; }
+        public State State { get => state; set => state = value; }
 
         public void checkIfInfected(List<Jednostka> jednostki)
         {

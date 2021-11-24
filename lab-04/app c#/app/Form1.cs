@@ -14,6 +14,7 @@ namespace app
 {
     public partial class Form1 : Form
     {
+        public static readonly float predkosc = 2.5f;
         public static readonly int czasZakazenia = 75;
         public static readonly int StepsPerSecond = 25;
         private int ballSize = 10;
@@ -56,7 +57,15 @@ namespace app
                 Movement movment = new Movement(rand.NextDouble(), rand.NextDouble());
                 if (rand.NextDouble() < 0.5) movment.X *= -1;
                 if (rand.NextDouble() < 0.5) movment.Y *= -1;
-                jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5));
+                //    jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5));
+                ////////////////////////
+                if (rand.NextDouble() < 0.5)
+                    jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5));
+                else
+                    jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Odporny()));
+                ////////////////////////
+
+
                 jednostki[i].Movement.Standarize();
             }
         }
@@ -66,7 +75,8 @@ namespace app
             int ii = 0;
             while (true)
             {
-                wypiszLiczbeOsobnikow(ii++);
+                if (ii == 25) { Console.WriteLine(Form1.iloscOsobnikow); ii = 0; }
+                ii++; 
                 noweJednostki();
                 obliczenia();
 
@@ -77,24 +87,50 @@ namespace app
 
                
                 g.DrawImage(bm, 0, 0);  
-                wait(1000 / Form1.StepsPerSecond);
+                wait((int)(1000 / Form1.StepsPerSecond / predkosc));
 
             }
         }
 
 
-
-
-
-
-        private void wypiszLiczbeOsobnikow(int ii)
+        private void noweJednostki()
         {
-            if (ii == 25)
+            Random rand = new Random();
+            if (rand.Next(5) == 0)
             {
-                Console.WriteLine(Form1.iloscOsobnikow);
-                ii = 0;
+                State tempState;
+                int t = rand.Next(20);
+
+
+                Movement movment = new Movement(rand.NextDouble(), rand.NextDouble());
+
+                Position position;
+                int r = rand.Next(4);
+                if (r == 0)
+                    position = new Position(0, rand.Next((int)ySize));
+                else if (r == 1)
+                    position = new Position(rand.Next((int)xSize), (int)ySize);
+                else if (r == 2)
+                    position = new Position((int)xSize, rand.Next((int)ySize));
+                else
+                    position = new Position(rand.Next((int)xSize), 0);
+
+                //todo dorobic tu ew w Movement.changeDirection zeby celował wektor w środek
+
+
+                if (t == 0) jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Objawowy()));
+                else if (t == 1) jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new BezObjawowy()));
+      //          else if ( t < 11) jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Zdrowy()));
+                else jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Odporny()));
+            
+
+                    Form1.iloscOsobnikow++;
             }
+
+
         }
+
+
 
 
 
@@ -132,6 +168,10 @@ namespace app
                 Console.WriteLine("nieudane ładowanie zapisu");
             }
         }
+
+
+
+
 
 
         private void createMemento(int nrZapisu)
@@ -210,41 +250,7 @@ namespace app
             }
         }
 
-        private void noweJednostki()
-        {
-            Random rand = new Random();
-            if (rand.Next(5) == 0)
-            {
-                Movement movment = new Movement(rand.NextDouble(), rand.NextDouble());
 
-                Position position;
-                int r = rand.Next(4);
-                if (r == 0)
-                {
-                    position = new Position(0, rand.Next((int)ySize));
-
-                }
-                else if (r == 1)
-                {
-                    position = new Position(rand.Next((int)xSize), (int)ySize);
-                }
-                else if (r == 2)
-                {
-                    position = new Position((int)xSize, rand.Next((int)ySize));
-                }
-                else
-                    position = new Position(rand.Next((int)xSize), 0);
-
-                //todo dorobic tu ew w Movement.changeDirection zeby celował wektor w środek
-
-
-                jednostki.Add(new Jednostka(position, movment, rand.NextDouble() * 2 + 0.5, new Objawowy()));
-                Form1.iloscOsobnikow++;
-                //   Console.WriteLine("stworzone nowego");
-            }
-
-
-        }
 
     }
 }

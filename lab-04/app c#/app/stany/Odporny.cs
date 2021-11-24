@@ -12,16 +12,12 @@ namespace app
 
         public void kontakt(List<Jednostka> list, Jednostka j)
         {
-
-        }
-        public Brush getColor()
-        {
-            return Brushes.LightGreen;
         }
 
-        public State newInstance()
-        {
-            return new Odporny();
-        }
+        public Brush getColor() => Brushes.LightGreen;
+
+        public State newInstance() => new Odporny();
+
+        public bool czyZakazi() => false;
     }
 }
