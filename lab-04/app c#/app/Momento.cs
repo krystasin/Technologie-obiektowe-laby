@@ -47,13 +47,13 @@ namespace app
 
             Console.WriteLine("restore " + i);
             try {
-
                 List<Jednostka> tempList = new List<Jednostka>();
                 foreach (var item in dictionary[i])
                 {
                     tempList.Add(new Jednostka(item));
                 }
-                return tempList; 
+                Form1.iloscOsobnikow = dictionary[i].Count;
+                return tempList;
             
             }
             catch {

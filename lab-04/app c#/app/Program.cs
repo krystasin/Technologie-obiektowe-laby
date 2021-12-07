@@ -16,7 +16,9 @@ namespace app
         {
 
 
-            List<Jednostka> j1 = new List<Jednostka>();
+
+            Jednostka a = new Jednostka(new Position(2, 2), new Movement(2, 2));
+            List <Jednostka> j1 = new List<Jednostka>();
             j1.Add(new Jednostka(new Position(2,2), new Movement(2,2)));
             j1.Add(new Jednostka(new Position(3,3), new Movement(2,2)));
             j1[1].Position.X = 10;
@@ -26,7 +28,7 @@ namespace app
                 Console.WriteLine(item.Position.X);
             }
 
-
+           
 
 
 

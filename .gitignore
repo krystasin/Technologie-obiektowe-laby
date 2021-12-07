@@ -3,4 +3,6 @@
 
 # Ada Library Information
 *.ali
+*.idea
+*.vs
 *ignore-folder*

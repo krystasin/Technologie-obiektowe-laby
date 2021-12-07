@@ -23,7 +23,7 @@ namespace app
         Bitmap bm;
 
         private List<Jednostka> jednostki = new List<Jednostka>();
-        static int iloscOsobnikow = 200;
+        public static int iloscOsobnikow = 200;
         private double xSize = 50, ySize = 50;
         private double xRate, yRate;
         private Momento momento = new Momento();
@@ -96,7 +96,8 @@ namespace app
         private void noweJednostki()
         {
             Random rand = new Random();
-            if (rand.Next(5) == 0)
+           // if (rand.Next(5) == 0)
+            if (true)
             {
                 State tempState;
                 int t = rand.Next(20);
