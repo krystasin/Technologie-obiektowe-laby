@@ -1,5 +1,5 @@
-package strategy;
+package strategy.state;
 
-public interface ZState {
-    int czasAkcji();
+public interface State {
+    int czasAkcjiIPowrotu();
 }

@@ -34,7 +34,7 @@ public class SKKM {
 
     private void generateEventsInLoop() {
         Random random = new Random();
-        int randomDelay = random.nextInt(4) * 1000 + 500;
+        int randomDelay = random.nextInt(4) * 1000 + 5000;
 
         Timer timer = new Timer();
 
@@ -102,9 +102,7 @@ public class SKKM {
 
 
         System.out.println(z.toString());
-        pojazdyDoWyslania.forEach((p) -> {
-            System.out.println(" -> " + p.getNazwa()  );
-        });
+        pojazdyDoWyslania.forEach((p) -> System.out.println(" -> " + p.getNazwa()  ));
         System.out.println("\n");
 
         return pojazdyDoWyslania;

@@ -16,11 +16,12 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
+
         SKKM skkm = new SKKM("Kraków" );
         skkm.start();
 
-/*        DelayControler aa = new DelayControler();
-        aa.beepForAnHour();*/
+
+
     }
 
 

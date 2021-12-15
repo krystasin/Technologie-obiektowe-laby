@@ -27,11 +27,8 @@ public class Jednostka {
 
     private void initializePojazdy() {
 
-        pojazdy.add(new Pojazd(nazwa + "#1",new Vector2D(polozenie)));
-        pojazdy.add(new Pojazd(nazwa + "#2",new Vector2D(polozenie)));
-        pojazdy.add(new Pojazd(nazwa + "#3",new Vector2D(polozenie)));
-//        pojazdy.add(new Pojazd(nazwa + " 4",new Vector2D(polozenie)));
-//        pojazdy.add(new Pojazd(nazwa + " 5",new Vector2D(polozenie)));
+        for (int i=1; i<6; i++)
+        pojazdy.add(new Pojazd(nazwa + " #" + i,new Vector2D(polozenie)));
     }
 
     public List<Pojazd> wyslijPojazdy(int potrzebnaLiczbaPojazdow){
